@@ -17,7 +17,7 @@ ALTER TABLE users ADD CONSTRAINT users_pkey PRIMARY KEY (id);
 CREATE TABLE events (
  id BIGSERIAL,
  user_id INTEGER,
- event_id INTEGER,
+ event_id VARCHAR(50),
  name VARCHAR(200),
  image_url VARCHAR(500),
  segment VARCHAR(50),

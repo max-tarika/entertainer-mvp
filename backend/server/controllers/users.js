@@ -3,6 +3,7 @@ const pool = require('../../db/index');
 module.exports = {
   get: (req, res) => {
     const sql = `SELECT
+      id,
       first_name,
       last_name,
       username,
