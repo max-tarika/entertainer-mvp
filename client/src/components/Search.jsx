@@ -9,16 +9,20 @@ const Search = () => {
   const {
     events, setEvents, displayedEvents, setDisplayedEvents,
   } = useContext(AppContext);
-  const [searchCategory, setSearchCategory] = useState('');
+  const [searchParameters, setSearchParameters] = useState({ location: 'Denver', segment: 'All' });
   const [showMore, setShowMore] = useState(false);
   const eventCategories = ['All', 'Arts & Theatre', 'Music', 'Sports', 'Miscellaneous', 'Film', 'Donation'];
+  const eventLocations = ['Any', 'Atlanta', 'Boston', 'Denver', 'Las Vegas', 'Los Angeles', 'New York', 'Saskatchewan'];
 
-  const handleSegmentClick = (e) => {
-    setSearchCategory(e.target.value);
+  const handleParameterClick = (e) => {
+    setSearchParameters({
+      ...searchParameters,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSearch = () => {
-    axios.get('/events', { params: { searchCategory } })
+    axios.get('/events', { params: searchParameters })
       .then(({ data }) => {
         setEvents(data);
         setDisplayedEvents(data.slice(0, 5));
@@ -41,17 +45,18 @@ const Search = () => {
     <div id="search">
       <div className="searchHeader">
         <div className="locationSelector">
-          <b>Location:</b>
-          {' '}
-          Denver
+          <div style={{ color: '#057DCD' }}><b>Location:</b></div>
+          <select name="location" className="location" onChange={handleParameterClick}>
+            {eventLocations.map((location) => <option value={location} key={location}>{location}</option>)}
+          </select>
         </div>
         <div className="segmentSelector">
-          <div><b>Event Category:</b></div>
-          <select name="segment" className="segment" onChange={handleSegmentClick}>
+          <div style={{ color: '#057DCD' }}><b>Event Category:</b></div>
+          <select name="segment" className="segment" onChange={handleParameterClick}>
             {eventCategories.map((category) => <option value={category} key={category}>{category}</option>)}
           </select>
         </div>
-        <button className="searchButton" type="button" onClick={handleSearch}>Show Me the Events</button>
+        <button className="searchButton" type="button" onClick={handleSearch}>Find Events</button>
       </div>
       <div className="searchFeedContainer">
         <div className="searchFeed">

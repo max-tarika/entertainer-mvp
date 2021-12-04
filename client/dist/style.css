@@ -86,12 +86,12 @@ h1 {
   padding: 15px 10px 10px 10px;
 }
 
-.segmentSelector {
+.segmentSelector, .locationSelector {
   display: flex;
   align-items: center;
 }
 
-.segment {
+.segment, .location {
   margin-left: 4px;
   border: 1px solid black;
   height: 30px;

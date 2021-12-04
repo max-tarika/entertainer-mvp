@@ -13,14 +13,26 @@ const segmentIds = {
   Donation: 'KZAyXgnZfZ7vAvv',
 };
 
-const getEvents = ({ searchCategory }) => {
-  const parameters = {
-    marketId: 6,
-    classificationId: segmentIds[searchCategory],
+const marketIds = {
+  Atlanta: '10',
+  Boston: '11',
+  Denver: '6',
+  'Las Vegas': '14',
+  'Los Angeles': '27',
+  'New York': '35',
+  Saskatchewan: '112',
+};
+
+const getEvents = ({ location, segment }) => {
+  console.log(location, segment);
+
+  const options = {
+    marketId: marketIds[location],
+    classificationId: segmentIds[segment],
   };
 
   return new Promise((resolve, reject) => {
-    axios.get(apiURL, { params: parameters })
+    axios.get(apiURL, { params: options })
       .then((events) => resolve(events))
       .catch(reject);
   });

@@ -25,7 +25,7 @@ const App = () => {
   useEffect(() => {
     getUsers();
 
-    axios.get('/events')
+    axios.get('/events', { params: { location: 'Denver', segment: 'All' } })
       .then(({ data }) => {
         setEvents(data);
         setDisplayedEvents(data.slice(0, 5));
