@@ -24,6 +24,7 @@ const Search = () => {
         setDisplayedEvents(data.slice(0, 5));
       })
       .catch((err) => console.error(err));
+    setShowMore(false);
   };
 
   const handleShowMoreClick = () => {
@@ -40,14 +41,17 @@ const Search = () => {
     <div id="search">
       <div className="searchHeader">
         <div className="locationSelector">
-          Location: Denver
+          <b>Location:</b>
+          {' '}
+          Denver
         </div>
         <div className="segmentSelector">
+          <div><b>Event Category:</b></div>
           <select name="segment" className="segment" onChange={handleSegmentClick}>
             {eventCategories.map((category) => <option value={category} key={category}>{category}</option>)}
           </select>
         </div>
-        <button className="searchButton" type="button" onClick={handleSearch}>Show Me the Events Babyyyyyy</button>
+        <button className="searchButton" type="button" onClick={handleSearch}>Show Me the Events</button>
       </div>
       <div className="searchFeedContainer">
         <div className="searchFeed">

@@ -3,14 +3,19 @@ import React from 'react';
 const UserCard = ({ user }) => (
   <div className="userCard">
     <div className="userInfo">
-      <div>{user.username}</div>
+      <div style={{ paddingRight: '10px' }}>
+        <b>
+          {user.first_name}
+          {' '}
+          {user.last_name}
+        </b>
+      </div>
       <div>
-        {user.first_name}
-        {' '}
-        {user.last_name}
+        @
+        {user.username}
       </div>
     </div>
-    <div>Events Attending:</div>
+    <div style={{ paddingLeft: '5px' }}><b>Events Attending:</b></div>
     <div>
       {user.events.map((event) => (
         <div className="userEventWrapper">

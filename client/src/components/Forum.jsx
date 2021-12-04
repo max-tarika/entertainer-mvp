@@ -24,13 +24,26 @@ const Forum = () => {
   return (
     <div id="forum">
       <div className="userForm">
-        <label>First Name: </label>
-        <input type="text" className="formName" title="first_name" onChange={handleFormChange} />
-        <label>Last Name: </label>
-        <input type="text" className="formName" title="last_name" onChange={handleFormChange} />
-        <label>Username: </label>
-        <input type="text" className="formName" title="username" onChange={handleFormChange} />
-        <button type="button" onClick={handleAddNewUserClick}>Add New User</button>
+        <div className="userFormHeader">Add a New User</div>
+        <div style={{ display: 'flex', padding: '5px 0' }}>
+          <label className="formLabel">
+            First Name:
+          </label>
+          <input type="text" className="formName" title="first_name" onChange={handleFormChange} />
+        </div>
+        <div style={{ display: 'flex', padding: '5px 0' }}>
+          <label className="formLabel">
+            Last Name:
+          </label>
+          <input type="text" className="formName" title="last_name" onChange={handleFormChange} />
+        </div>
+        <div style={{ display: 'flex', padding: '5px 0' }}>
+          <label className="formLabel">
+            Username:
+          </label>
+          <input type="text" className="formName" title="username" onChange={handleFormChange} />
+        </div>
+        <button type="button" className="addNewUser" onClick={handleAddNewUserClick}>Add</button>
       </div>
       {/* <div className="currentUser">
         <div>{currentUser.username}</div>
