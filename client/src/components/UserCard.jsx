@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const UserCard = () => {
-  return (
+const UserCard = ({ user }) => (
+  <div className="userCard">
+    <div>{user.first_name}</div>
+    <div>{user.last_name}</div>
+    <div>{user.username}</div>
+    <div>Events Attending:</div>
     <div>
-      User Card
+      {user.events.map((event) => <div>{event.name}</div>)}
     </div>
-  );
-};
+  </div>
+);
 
 export default UserCard;

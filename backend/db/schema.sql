@@ -27,7 +27,8 @@ CREATE TABLE events (
  city VARCHAR(50),
  state VARCHAR(50),
  price_min INTEGER,
- price_max INTEGER
+ price_max INTEGER,
+ ticket_url VARCHAR(500)
 );
 
 

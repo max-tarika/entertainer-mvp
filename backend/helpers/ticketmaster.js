@@ -4,6 +4,7 @@ const { TOKEN } = require('../../config.js');
 const apiURL = `https://app.ticketmaster.com/discovery/v2/events.json?&apikey=${TOKEN}`;
 
 const segmentIds = {
+  All: '',
   'Arts & Theatre': 'KZFzniwnSyZfZ7v7na',
   Music: 'KZFzniwnSyZfZ7v7nJ',
   Sports: 'KZFzniwnSyZfZ7v7nE',
@@ -12,11 +13,10 @@ const segmentIds = {
   Donation: 'KZAyXgnZfZ7vAvv',
 };
 
-const getEvents = (options) => {
-  // console.log('Getting events with: ', options);
+const getEvents = ({ searchCategory }) => {
   const parameters = {
     marketId: 6,
-    classificationId: segmentIds.Music,
+    classificationId: segmentIds[searchCategory],
   };
 
   return new Promise((resolve, reject) => {

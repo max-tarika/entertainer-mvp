@@ -21,6 +21,7 @@ module.exports = {
             state: result._embedded.venues[0].state.stateCode,
             price_min: result.priceRanges[0].min,
             price_max: result.priceRanges[0].max,
+            ticket_url: result.url,
           };
 
           events.push(event);

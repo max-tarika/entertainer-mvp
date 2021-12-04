@@ -1,9 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import React, { useContext } from 'react';
+import AppContext from './context.js';
 
-const EventCard = () => {
+const EventCard = ({ event }) => {
+  const { currentUser, getUsers } = useContext(AppContext);
+
+  const handleEventClick = () => {
+    axios.post('/users/event', { currentUser, event })
+      .then(() => getUsers())
+      .catch((err) => console.error(err));
+  };
+
   return (
-    <div>
-      Event Card
+    <div className="eventCard">
+      <div className="eventColumnWrapper1">
+        <div className="eventImageWrapper">
+          <img className="eventImage" src={event.image_url} alt={event.name} />
+        </div>
+        <div>
+          {event.city}
+          ,
+          {' '}
+          {event.state}
+        </div>
+      </div>
+      <div className="eventColumnWrapper1">
+        <div className="eventDescription">{event.name}</div>
+        <div className="eventDescription">{event.venue}</div>
+        <div className="eventDate">
+          <div className="eventDescription">{event.time}</div>
+          <div className="eventDescription">{event.date}</div>
+        </div>
+        <div className="eventPriceRange">
+          <div>
+            {' '}
+            Pricing: $
+            {event.price_min}
+            {' '}
+            - $
+            {event.price_max}
+          </div>
+        </div>
+      </div>
+      <div className="eventColumnWrapper3">
+        <button className="selectEventButton" type="button" onClick={handleEventClick}>I am Attending!</button>
+        <div className="ticketWrapper"><a href={event.ticket_url}>Buy Tickets!</a></div>
+      </div>
     </div>
   );
 };

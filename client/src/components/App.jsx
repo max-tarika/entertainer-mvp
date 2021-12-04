@@ -1,4 +1,5 @@
-import React, { useState, useContext } from 'react';
+/* eslint-disable react/jsx-no-constructed-context-values */
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from './Header.jsx';
 import Search from './Search.jsx';
@@ -7,12 +8,30 @@ import AppContext from './context.js';
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState('');
+  const [users, setUsers] = useState([]);
+  const [events, setEvents] = useState([]);
+  const [displayedEvents, setDisplayedEvents] = useState([]);
 
-  // useEffect(() => {
-  //   axios.get('/users')
+  const getUsers = () => {
+    axios.get('/users')
+      .then(({ data }) => {
+        if (data) {
+          setUsers(data);
+        }
+      })
+      .catch((err) => console.error(err));
+  };
 
-  //   axios.get('/events')
-  // }, []);
+  useEffect(() => {
+    getUsers();
+
+    axios.get('/events')
+      .then(({ data }) => {
+        setEvents(data);
+        setDisplayedEvents(data.slice(0, 5));
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <AppContext.Provider value={{
@@ -22,13 +41,17 @@ const App = () => {
       setDisplayedEvents,
       currentUser,
       setCurrentUser,
+      getUsers,
+      users,
     }}
     >
-      <React.Fragment>
-       <Header />
-       <Search />
-       <Forum />
-      </React.Fragment>
+      <>
+        <Header />
+        <div id="body">
+          <Search />
+          <Forum />
+        </div>
+      </>
     </AppContext.Provider>
   );
 };

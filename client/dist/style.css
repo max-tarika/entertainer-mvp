@@ -1,0 +1,108 @@
+/*
+----------- App.jsx -----------
+*/
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff;
+  transition: 0.5s;
+}
+
+#app{
+  width: 100%;
+  max-width: 1200px;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 5px;
+  margin: 5px;
+}
+
+#body {
+  display: flex;
+  justify-content: space-evenly
+}
+/*
+---------- Header -----------
+*/
+/*
+---------- Search -----------
+*/
+#search {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 65%;
+  border: 1px solid black;
+}
+
+.searchHeader {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 15px 10px 10px 10px;
+}
+
+.searchFeedContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 100%;
+  margin-bottom: 15px;
+}
+
+.searchFeed {
+  width: 90%;
+}
+
+.eventCard {
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid black;
+  padding: 20px 10px;
+  margin: 10px;
+  box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 5px 8px 0px rgb(0 0 0 / 14%), 0px 1px 14px 0px rgb(0 0 0 / 12%);
+}
+
+.eventColumnWrapper3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.eventImageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 150px;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+img.eventImage {
+  max-width: auto;
+  max-height: 150%;
+}
+
+.eventDescription {
+  padding: 2px;
+}
+
+button.showMore {
+  margin-top: 8px;
+}
+/*
+---------- Forum -----------
+*/
+#forum {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 35%;
+  border: 1px solid black;
+}
