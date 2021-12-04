@@ -10,7 +10,7 @@ const Header = () => {
 
   return (
     <div id="header">
-      <h1>Apollo</h1>
+      <h1>Event Lord</h1>
       <select name="userSelect" className="userSelect" onChange={handleUserSelect}>
         <option>Choose a User</option>
         {users.map((user) => <option value={user.id} key={user.id}>{user.username}</option>)}
