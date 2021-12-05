@@ -24,8 +24,6 @@ const marketIds = {
 };
 
 const getEvents = ({ location, segment }) => {
-  console.log(location, segment);
-
   const options = {
     marketId: marketIds[location],
     classificationId: segmentIds[segment],
